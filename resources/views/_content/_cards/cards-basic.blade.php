@@ -557,18 +557,6 @@
     </div>
   </div>
   <div class="col-sm-6 col-lg-4 mb-4">
-    <div class="card p-3">
-      <figure class="p-3 mb-0">
-        <blockquote class="blockquote">
-          <p>A well-known quote, contained in a blockquote element.</p>
-        </blockquote>
-        <figcaption class="blockquote-footer mb-0 text-muted">
-          Someone famous in <cite title="Source Title">Source Title</cite>
-        </figcaption>
-      </figure>
-    </div>
-  </div>
-  <div class="col-sm-6 col-lg-4 mb-4">
     <div class="card">
       <img class="card-img-top" src="{{asset('assets/img/elements/18.jpg')}}" alt="Card image cap" />
       <div class="card-body">

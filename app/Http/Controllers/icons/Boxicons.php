@@ -9,6 +9,6 @@ class Boxicons extends Controller
 {
   public function index()
   {
-    return view('content.icons.icons-boxicons');
+    return view('_content.icons.icons-boxicons');
   }
 }

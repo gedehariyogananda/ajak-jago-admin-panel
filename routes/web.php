@@ -1,19 +1,52 @@
 <?php
 
+use App\Http\Controllers\AddmemberController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TeamController;
+use App\Http\Controllers\WebinarController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 $controller_path = 'App\Http\Controllers';
+
+
+Auth::routes();
+
+Route::get('/admin/panel-user', [HomeController::class, 'index'])->name('home');
+Route::get('/admin/panel-user/{user:identifier}/edit', [HomeController::class, 'edit'])->name('user.edit');
+
+Route::get('/admin/panel-user/{user:identifier}/editteam', [HomeController::class, 'editTeam'])->name('useredit.team');
+Route::get('/admin/panel-user/{user:identifier}/editteam/c-level', [HomeController::class, 'editTeamNoClevel'])->name('usereditnoclevel.team');
+Route::patch('/admin/panel-user/{user:identifier}/editteam/c-level', [HomeController::class, 'editTeamNoCleveled'])->name('usereditnoclevel.update');
+Route::patch('/admin/panel-user/{user:identifier}/editteam', [HomeController::class, 'editTeamed'])->name('useredit.update');
+
+
+Route::patch('/admin/panel-user/{user:identifier}', [HomeController::class, 'update'])->name('user.update');
+Route::delete('/admin/panel-user/{user:identifier}', [HomeController::class, 'destroy'])->name('user.destroy');
+Route::get('/admin/panel-user/{team:identifier}', [TeamController::class, 'showTeam'])->name('show.team');
+
+Route::get('/admin/make/team', [TeamController::class, 'show'])->name('team.show');
+Route::post('/admin/make/team', [TeamController::class, 'store'])->name('team.store');
+Route::delete('/admin/team/{team:identifier}', [TeamController::class, 'destroy'])->name('team.destroy');
+
+Route::get('/admin/add/{team:identifier}/addmember', [AddmemberController::class, 'addMember'])->name('add.addmember');
+Route::patch('/admin/add/{team:identifier}', [AddmemberController::class, 'editUser'])->name('add.edituser');
+Route::get('/admin/edit/{team:identifier}/edit/team', [AddmemberController::class, 'editTeam'])->name('add.editteam');
+Route::patch('/admin/edit/{team:identifier}/edit/team', [AddmemberController::class, 'editTeamed'])->name('add.editteamed');
+
+// jago dalam sehari 
+Route::get('/admin/panel-jago-dalam-sehari', [WebinarController::class,'index'])->name('webinar.index');
+Route::get('/admin/panel-jago-dalam-sehari/buat-webinar', [WebinarController::class,'show'])->name('webinar.show');
+Route::post('/admin/panel-jago-dalam-sehari/buat-webinar', [WebinarController::class,'store'])->name('webinar.store');
+Route::get('/admin/panel-jago-dalam-sehari/{webinar:identifier}/edit', [WebinarController::class,'edit'])->name('webinar.edit');
+Route::patch('/admin/panel-jago-dalam-sehari/{webinar:identifier}', [WebinarController::class,'update'])->name('webinar.update');
+
+
+// jago dalam sehari view responded
+Route::get('/admin/panel-jago-dalam-sehari/responded/{webinar:identifier}', [WebinarController::class,'responded'])->name('webinar.responded');
+
+
+
 
 // Main Page Route
 Route::get('/', $controller_path . '\dashboard\Analytics@index')->name('dashboard-analytics');
@@ -78,3 +111,4 @@ Route::get('/form/layouts-horizontal', $controller_path . '\form_layouts\Horizon
 
 // tables
 Route::get('/tables/basic', $controller_path . '\tables\Basic@index')->name('tables-basic');
+

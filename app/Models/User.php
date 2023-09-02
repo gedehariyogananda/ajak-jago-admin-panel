@@ -21,6 +21,14 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'level_education',
+        'provincial_origin',
+        'wa_number',
+        'institusi',
+        'profile_picture',
+        'age',
+        'subteam',
+        'team_id'
     ];
 
     /**
@@ -32,6 +40,22 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    //teams
+    public function team(){
+        return $this->belongsTo(Team::class);
+    }
+
+     //partisipan_webinar
+    public function webinars(){
+        return $this->belongsToMany(Webinar::class,'partisipant_webinar', 'user_id', 'webinar_id');
+    }
+
+     // bootcamp_user
+    public function bootcamps(){
+        return $this->belongsToMany(Bootcamp::class);
+    }
+    
 
     /**
      * The attributes that should be cast.
