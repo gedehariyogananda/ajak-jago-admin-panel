@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Requests\TeamRequest;
 use App\Models\Team;
 use Illuminate\Support\Str;
@@ -30,13 +31,13 @@ class TeamController extends Controller
             'identifier' => Str::slug($request->name),
         ]);
 
-        return redirect('admin/panel-user')->with('success', 'Team created successfully');
+        return redirect('/')->with('success', 'You are succes make team');
     }
 
     public function destroy(Team $team){
         
         $team->delete();
 
-        return back()->with('success', 'The C-LEVEL team not hadden be deletted');
+        return back()->with('success', 'You are succes delete team');
     }
 }

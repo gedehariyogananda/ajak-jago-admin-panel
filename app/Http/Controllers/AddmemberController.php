@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TeamRequest;
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Team;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -22,7 +23,7 @@ class AddmemberController extends Controller
                 'team_id' => $team->id,
             ]);
 
-            return redirect('admin/panel-user')->with('success', 'The user team has been updated');
+            return redirect('/')->with('success', 'The user team has been updated successfully');
     }
 
     public function editTeam(Team $team){
@@ -32,7 +33,7 @@ class AddmemberController extends Controller
     public function editTeamed(TeamRequest $request, Team $team){
         $team->update($request->all());
 
-        return redirect('admin/panel-user')->with('success', 'The name of team has been updated');
+        return redirect('/')->with('success', 'the name of team has been updated');
 
     }
 }

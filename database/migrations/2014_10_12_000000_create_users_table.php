@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('provincial_origin');
             $table->bigInteger('wa_number');
             $table->string('institusi');
-            $table->string('profile_picture');
+            $table->string('profile_picture')->nullable();
             $table->integer('age');
             $table->string('subteam')->nullable();
             $table->timestamp('email_verified_at')->nullable();

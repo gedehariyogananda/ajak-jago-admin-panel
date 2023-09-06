@@ -1,6 +1,6 @@
 @extends('layouts/contentNavbarLayout')
 
-@section('title', 'User Panel')
+@section('title', 'Edit Profile')
 
 @section('vendor-style')
 <link rel="stylesheet" href="{{asset('assets/vendor/libs/apex-charts/apex-charts.css')}}">
@@ -18,27 +18,33 @@
     <div class="row">
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header">Edit Profile Subteam {{ $user->name }}</div>
-                <hr>
                 <div class="body">
                     <form action="{{ route('useredit.update', $user) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('patch')
                         <div class="mx-3">
+                            <p class="mt-3">Edit Profile Subteam
+                                <span class="badge bg-label-primary me-1">{{ $user->name }}</span>
+                            </p>
+                            <hr>
                             <label class="my-2" for="team_id">Sub Team</label>
                             <input type="text" class="form-control" name="subteam">
                             @error('subteam')
-                                {{ $message }}
+                                <div class="text-danger">
+                                    {{ $message }}
+                                </div>
                             @enderror
 
                             <label for="">Image</label>
                             <input type="hidden" name="oldImage" value="{{ $user->profile_picture }}">
                             <input type="file" name="profile_picture" value="{{ $user->profile_picture }}" class="form-control" id="">
                             @error('profile_picture')
-                                {{ $message }}
+                                <div class="text-danger">
+                                    {{ $message }}
+                                </div>
                             @enderror
 
-                            <button type="submit" class="btn btn-secondary btn-sm my-3">Submitted</button>
+                            <button type="submit" class="btn btn-primary btn-sm my-3">Submitted</button>
                         </div>
                         
                     </form>
@@ -47,6 +53,5 @@
             </div>
         </div>
     </div>
-
 
 @endsection

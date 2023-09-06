@@ -14,10 +14,17 @@ return new class extends Migration
     public function up()
     {
         Schema::create('bootcamp_participant', function (Blueprint $table) {
-            $table->id();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->foreignId('bootcamp_id')->constrained('bootcamps')->cascadeOnDelete();
+            $table->string('jurusan');
+            $table->text('description');
+            $table->text('pengembangan');
+            $table->text('ekspetasi');
+            $table->string('file_cv');
+            $table->string('bukti_follows');
+            $table->string('open_regis');
             $table->timestamps();
+            $table->primary(['user_id','bootcamp_id']);
         });
     }
 

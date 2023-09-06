@@ -24,7 +24,7 @@ class WebinarRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['min:3', 'max:20'],
+            'title' => ['min:3', 'max:50'],
             'description' => ['min:3', 'max:100'],
             'datetime' => ['min:3'],
             'place' => ['min:3', 'max:40'],

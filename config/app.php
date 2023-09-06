@@ -178,6 +178,9 @@ return [
     App\Providers\RouteServiceProvider::class,
     App\Providers\MenuServiceProvider::class,
 
+    // data table
+    Yajra\DataTables\DataTablesServiceProvider::class,
+
   ],
 
   /*
@@ -192,7 +195,6 @@ return [
     */
 
   'aliases' => Facade::defaultAliases()->merge([
-    // ...
   ])->toArray(),
 
 ];

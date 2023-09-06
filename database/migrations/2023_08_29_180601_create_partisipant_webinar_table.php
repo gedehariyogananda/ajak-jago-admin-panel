@@ -14,10 +14,15 @@ return new class extends Migration
     public function up()
     {
         Schema::create('partisipant_webinar', function (Blueprint $table) {
-            $table->id();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->foreignId('webinar_id')->constrained('webinars')->cascadeOnDelete();
-            
+            $table->primary(['user_id','webinar_id']);
+            $table->enum('info', ['Instagram', 'Others','Teman','Linkedin']);
+            $table->string('bukti_follow');
+            $table->string('bukti_share');
+            $table->string('next_idea');
+            $table->timestamps();
+      
         });
     }
 

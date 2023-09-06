@@ -10,25 +10,16 @@ class Webinar extends Model
     protected $casts = [
         'datetime' => 'datetime'
     ];
-    
-    protected $fillable = [
-        'title',
-        'description',
-        'identifier',
-        'datetime',
-        'place',
-        'fee',
-        'image_path',
-        'video_url',
-        'meet_url',
-        'poster_url',
-    ];
+
+    protected $guarded = ['id'];
 
     use HasFactory;
 
     //webinar user
-    public function users(){
-        return $this->belongsToMany(User::class, 'partisipant_webinar', 'webinar_id', 'user_id');
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'partisipant_webinar', 'webinar_id', 'user_id')
+        ->withPivot('info','bukti_follow','bukti_share','next_idea')
+        ->withTimestamps();
     }
-    
 }

@@ -1,6 +1,6 @@
 @extends('layouts/contentNavbarLayout')
 
-@section('title', 'User Panel')
+@section('title', 'Edit Profile')
 
 @section('vendor-style')
 <link rel="stylesheet" href="{{asset('assets/vendor/libs/apex-charts/apex-charts.css')}}">
@@ -18,20 +18,15 @@
     <div class="row">
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header">Edit Profile sub team {{ $user->name }}</div>
-
-                @if(session()->has('success'))
-                <div class="alert alert-primary">
-                  {{ session('success') }}
-                </div>
-              @endif
-              
-                <hr>
                 <div class="body">
                     <form action="{{ route('usereditnoclevel.update', $user) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('patch')
                         <div class="mx-3">
+                            <p class="mt-3">Edit Profile Subteam
+                                <span class="badge bg-label-primary me-1">{{ $user->name }}</span>
+                            </p>
+                            <hr>
                             <div class="row">
                                 <div class="col-sm-4">
                                     <div class="card text-center">
@@ -67,21 +62,23 @@
                                         </div>
                                     </div>
                                 </div>
+                                @error('subteam')
+                                    <div class="text-danger">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
-                            
-
-                            @error('subteam')
-                                {{ $message }}
-                            @enderror
 
                             <label for="">Image</label>
                             <input type="hidden" name="oldImage" value="{{ $user->profile_picture }}">
                             <input type="file" name="profile_picture" class="form-control" id="">
                             @error('profile_picture')
-                                {{ $message }}
+                                <div class="text-danger">
+                                    {{ $message }}
+                                </div>
                             @enderror
 
-                            <button type="submit" class="btn btn-secondary btn-sm my-3">Submitted</button>
+                            <button type="submit" class="btn btn-primary btn-sm my-3">Submitted</button>
                         </div>
                         
                     </form>
@@ -90,6 +87,5 @@
             </div>
         </div>
     </div>
-
 
 @endsection

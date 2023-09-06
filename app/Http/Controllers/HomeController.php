@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Team;
 use App\Models\User;
 
@@ -61,7 +62,8 @@ class HomeController extends Controller
             }
            
         }
-        return redirect('admin/panel-user')->with('success', 'The user sub team has been updated');
+
+        return redirect('/')->with('success', 'the user sub team has been updated');
     }   
 
 
@@ -85,7 +87,8 @@ class HomeController extends Controller
             }
            
         }
-        return redirect('admin/panel-user')->with('success', 'The user sub team has been updated');
+
+        return redirect('/')->with('success', 'the user sub team has been updated');
     }
 
     public function update(UserRequest $request, User $user){
@@ -93,12 +96,12 @@ class HomeController extends Controller
 
         $user->update($request->all());
 
-        return redirect('admin/panel-user')->with('success', 'Team updated successfully');
+        return redirect('/')->with('success', 'team has been updated successfully');
     }
 
     public function destroy(User $user){
         $user->delete();
 
-        return back()->with('success', 'The User Has Been Deleted successfully');
+        return back()->with('success', 'Team has been deleted successfully');
     }
 }

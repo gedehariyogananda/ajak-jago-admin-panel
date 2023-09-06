@@ -1,6 +1,6 @@
 @extends('layouts/contentNavbarLayout')
 
-@section('title', 'User Panel')
+@section('title', 'Make a New Team')
 
 @section('vendor-style')
 <link rel="stylesheet" href="{{asset('assets/vendor/libs/apex-charts/apex-charts.css')}}">
@@ -25,8 +25,13 @@
                         @csrf
                         <div class="mx-3">
                             <label class="my-2" for="team_id">Name Team</label>
-                            <input type="text" id="team_id" name="name" class="form-control @error('name') is-invalid @enderror">
-                            <button type="submit" class="btn btn-secondary btn-sm my-3">Submitted</button>
+                            <input type="text" id="team_id" name="name" class="form-control">
+                            @error('name')
+                                <div class="text-danger">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                            <button type="submit" class="btn btn-primary btn-sm my-3">Submitted</button>
                         </div>
                         
                     </form>

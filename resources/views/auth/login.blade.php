@@ -38,15 +38,8 @@
               @enderror
 
             </div>
-            <div class="mb-3 form-password-toggle">
-              <div class="d-flex justify-content-between">
-                <label class="form-label" for="password">Password</label>
-
-                @if (Route::has('password.request'))
-                <a class="btn btn-link" href="{{ route('password.request') }}">
-                    {{ __('Forgot Your Password?') }}
-                </a>
-              @endif
+            <div class=" form-password-toggle">
+            <label class="form-label" for="password">Password</label>
 
               </div>
               <div class="input-group input-group-merge">
@@ -61,7 +54,7 @@
                 
               </div>
             </div>
-            <div class="mb-3">
+            <div class="mb-3 mx-3">
               <div class="form-check">
                 <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                 <label class="form-check-label" for="remember">
@@ -69,23 +62,13 @@
                 </label>
               </div>
             </div>
-            <div class="mb-3">
+            <div class="mb-3  mx-3">
               <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
             </div>
           </form>
-
-         
-
-          <p class="text-center">
-            <span>New on our platform?</span>
-            <a href="{{ route('register') }}">
-              <span>Create an account</span>
-            </a>
-          </p>
         </div>
       </div>
     </div>
-    <!-- /Register -->
   </div>
 </div>
 </div>

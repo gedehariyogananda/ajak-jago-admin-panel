@@ -88,7 +88,7 @@ $navbarDetached = ($navbarDetached ?? '');
               <li>
                 <a class="dropdown-item" href="javascript:void(0);">
                   <i class='bx bx-cog me-2'></i>
-                  <span class="align-middle">Settings</span>
+                  <span class="align-middle disabled">Settings</span>
                 </a>
               </li>
               <li>

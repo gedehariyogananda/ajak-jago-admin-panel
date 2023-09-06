@@ -22,10 +22,12 @@ return new class extends Migration
             $table->string('place');
             $table->string('fee');
             $table->string('image_path');
+            $table->enum('status', ['open','closed']);
             $table->string('video_url')->nullable();
             $table->string('meet_url');
             $table->string('poster_url');
             $table->timestamps();
+            
         });
     }
 

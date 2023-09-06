@@ -1,6 +1,6 @@
 @extends('layouts/contentNavbarLayout')
 
-@section('title', 'User Panel')
+@section('title', 'Edit Team')
 
 @section('vendor-style')
 <link rel="stylesheet" href="{{asset('assets/vendor/libs/apex-charts/apex-charts.css')}}">
@@ -18,13 +18,15 @@
     <div class="row">
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header">Edit Team {{ $user->name }}</div>
-                <hr>
                 <div class="body">
                     <form action="{{ route('user.update', $user) }}" method="post">
                         @csrf
                         @method('patch')
                         <div class="mx-3">
+                            <p class="mt-3">Edit Team 
+                                <span class="badge bg-label-primary me-1">{{ $user->name }}</span>
+                            </p>
+                            <hr>
                             <label class="my-2" for="team_id">Team</label>
                             <select class="form-select" name="team_id" id="team_id">
                                 <option selected disabled>Open this select menu</option>
@@ -32,7 +34,7 @@
                                     <option value="{{ $team->id }}">{{ $team->name }}</option>
                                 @endforeach
                             </select>
-                            <button type="submit" class="btn btn-secondary btn-sm my-3">Submitted</button>
+                            <button type="submit" class="btn btn-primary btn-sm my-3">Submitted</button>
                         </div>
                         
                     </form>
