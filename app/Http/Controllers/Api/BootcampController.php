@@ -65,7 +65,7 @@ class BootcampController extends Controller
                 'ekspetasi' => ['required','min:3'],
                 'file_cv' => ['required','mimes:jpg,bmp,png,pdf,docx', 'max:3000'],
                 'bukti_follows' => ['required','mimes:jpg,bmp,png,pdf,docx','max:3000'],
-                'open_regis' => ['required','mimes:jpg,bmp,png,pdf,docx','max:3000'],
+                'bukti_shared' => ['required','mimes:jpg,bmp,png,pdf,docx','max:3000'],
             ]);
     
             //if validation fails
@@ -82,7 +82,7 @@ class BootcampController extends Controller
                 'ekspetasi' => $request->ekspetasi,
                 'file_cv' => $request->file('file_cv')->store('pict-bootcamp-users-image'),
                 'bukti_follows' => $request->file('bukti_follows')->store('pict-bootcamp-users-image'),
-                'open_regis' => $request->file('open_regis')->store('pict-bootcamp-users-image'),
+                'bukti_shared' => $request->file('bukti_shared')->store('pict-bootcamp-users-image'),
                 'created_at' => now(),
             ]);
     

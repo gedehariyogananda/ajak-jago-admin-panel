@@ -92,9 +92,11 @@ class HomeController extends Controller
     }
 
     public function update(UserRequest $request, User $user){
-        $request['team_id'] = $request->team_id;
 
-        $user->update($request->all());
+        $user->update([
+            'team_id' => $request->team_id,
+            'subteam' => '-',
+        ]);
 
         return redirect('/')->with('success', 'team has been updated successfully');
     }

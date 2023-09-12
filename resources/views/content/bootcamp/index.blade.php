@@ -73,8 +73,8 @@
                     <ul class="list-group mt-2">
                         <li class="list-group-item">Title : {{ $bootcamp->title }}</li>
                         <li class="list-group-item">Description  : {{ $bootcamp->description }}</li>
-                        <li class="list-group-item">Start : {{ $bootcamp->start_date_reg->format('d F Y') }}</li>
-                        <li class="list-group-item">End : {{ $bootcamp->end_date_reg->format('d F Y') }}</li>
+                        <li class="list-group-item">Start : {{ $bootcamp->start_date_reg}}</li>
+                        <li class="list-group-item">End : {{ $bootcamp->end_date_reg }}</li>
                         <li class="list-group-item">Place : {{ $bootcamp->place }}</li>
                         <li class="list-group-item">Fee : {{ $bootcamp->fee }}</li>
                         <li class="list-group-item" class="mt-2">Wa Group URL : {{ $bootcamp->wa_group_url }}</li>

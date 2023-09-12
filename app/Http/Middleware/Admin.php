@@ -18,7 +18,7 @@ class Admin
     {
         return $next($request);
 
-        if(!auth()->check() || !auth()->user()->team_id == '2'){
+        if(!auth()->check() || !auth()->user()->team_id == '3'){
             abort(403);
         }
     }

@@ -8,12 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Bootcamp extends Model
 {
     use HasFactory;
-
-    protected $casts = [
-        'start_date_reg' => 'date',
-        'end_date_reg' => 'date',
-    ];
-
     protected $fillable = [
         'title',
         'description',
@@ -31,7 +25,7 @@ class Bootcamp extends Model
     public function users()
     {
         return $this->belongsToMany(User::class,'bootcamp_participant','bootcamp_id','user_id')
-        ->withPivot('jurusan','description','pengembangan', 'ekspetasi','file_cv','bukti_follows', 'open_regis')
+        ->withPivot('jurusan','description','pengembangan', 'ekspetasi','file_cv','bukti_follows', 'bukti_shared')
         ->withTimestamps();
     }
 }

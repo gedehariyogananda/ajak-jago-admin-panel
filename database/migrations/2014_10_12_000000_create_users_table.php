@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('subteam')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->foreignId('team_id')->nullable()->constrained('teams')->cascadeOnDelete()->nullOnDelete();
+            $table->foreignId('team_id')->nullable()->constrained('teams')->cascadeOnDelete()->nullOnDelete()->default('2');
             $table->rememberToken();
             $table->timestamps();
         });

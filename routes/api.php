@@ -1,9 +1,7 @@
 <?php
 
-use App\Http\Controllers\Api\AboutUsController;
+use App\Http\Controllers\Api\ApiController;
 use App\Http\Controllers\Api\AuthController;
-use App\Http\Controllers\Api\BootcampController;
-use App\Http\Controllers\Api\WebinarController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,22 +21,19 @@ Route::group(['middleware' => 'api'], function () {
     });
    
 
-    // route get webinar n insert
-    Route::get('/get/webinar',[WebinarController::class, 'index']);
-    Route::get('/get/webinar/{webinar:identifier}/shows',[WebinarController::class, 'pageShowWebinar']);
-    Route::post('/get/webinar/{webinar:identifier}', [WebinarController::class,'pageInsertWebinar']);
+    // route get join program page home webinar dan bootcamp limit 3
+    Route::get('/get/join-program-page',[ApiController::class, 'getJoinProgramPage'])->name('getJoinProgramPage');
 
-    //checked is regitered or not
-    Route::post('/get/webinar/{webinar:identifier}/check', [WebinarController::class,'isRegistered']);
+    // route get all in no limit webinar
+    Route::get('/get/join-program-page/webinar',[ApiController::class, 'getJagoDalamSehariPage'])->name('getJagoDalamSehariPage');
 
-    // route get about us
-    Route::get('get/about-us',[AboutUsController::class,'index']);
+    // insert jago dalam sehari 
+    Route::post('/insert/jago-dalam-sehari/{webinar:identifier}/form',[ApiController::class, 'insertJagoDalamSehari'])->name('insertJagoDalamSehari');
 
-    // route get bootcamp n insert
-    Route::get('/get/bootcamp',[BootcampController::class, 'index']);
-    Route::get('/get/bootcamp/register',[BootcampController::class, 'pageShowBootcamp']);
-    Route::post('/get/bootcamp/{bootcamp:identifier}', [BootcampController::class,'pageInsertBootcamp']);
+    // views jago champ form
+    Route::post('insert/jago-champ/form',[ApiController::class, 'insertJagoChamp'])->name('insertJagoChamp');
 
-    
+    // about us panel 
+    Route::get('about-us/get', [ApiController::class, 'getAboutUs'])->name('getAboutUs');
 });
 

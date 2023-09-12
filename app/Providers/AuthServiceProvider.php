@@ -28,11 +28,11 @@ class AuthServiceProvider extends ServiceProvider
 
         
         Gate::define('admin only', function(User $user){
-            return $user->team_id == '2';
+            return $user->team_id == '3';
         });
 
         Gate::define('staff only', function(User $user){
-            return $user->team_id != '2';
+            return $user->team_id != '3';
         });
     }
 }

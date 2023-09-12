@@ -24,15 +24,15 @@ class WebinarRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['min:3', 'max:50'],
-            'description' => ['min:3', 'max:100'],
+            'title' => ['min:3'],
+            'description' => ['min:3'],
             'datetime' => ['min:3'],
-            'place' => ['min:3', 'max:40'],
-            'fee' => ['min:3', 'max:20'],
-            'image_path' => ['image', 'file', 'max:1024'],
-            'video_url' => ['min:3', 'max:100'],
-            'meet_url' => ['min:3', 'max:100'],
-            'poster_url' => ['min:3', 'max:100'],
+            'place' => ['min:3'],
+            'fee' => ['min:3'],
+            'image_path' => ['image', 'file', 'max:3000'],
+            'video_url' => ['min:0'],
+            'meet_url' => ['min:0'],
+            'poster_url' => ['min:3'],
         ];
     }
 }

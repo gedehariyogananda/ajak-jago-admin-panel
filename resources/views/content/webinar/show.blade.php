@@ -25,14 +25,14 @@
                         @csrf
                         <div class="mx-3">
                             <label class="label-control my-2" for="">title</label>
-                            <input class="form-control mb-4" type="text" name="title">
+                            <input class="form-control mb-4" type="text" name="title" value="{{ old('title') }}">
                             @error('title')
                                 <div class="text-danger">
                                     {{ $message }}
                                 </div>
                             @enderror
                             <div class="form-floating">
-                                <textarea class="form-control" name="description" placeholder="Leave a description here" id="floatingTextarea"></textarea>
+                                <textarea class="form-control" name="description" placeholder="Leave a description here" id="floatingTextarea">{{ old('description') }}</textarea>
                                 <label for="floatingTextarea">Description</label>
                             </div>
                             @error('description')
@@ -48,14 +48,14 @@
                                 </div>
                             @enderror
                             <label class="label-control my-2" for="">Place</label>
-                            <input class="form-control" type="text" name="place">
+                            <input class="form-control" type="text" name="place" value="{{ old('place') }}">
                             @error('place')
                                 <div class="text-danger">
                                     {{ $message }}
                                 </div>
                             @enderror
                             <label class="label-control my-2" for="">Fee</label>
-                            <input class="form-control" type="text" name="fee">
+                            <input class="form-control" type="text" name="fee" value="{{ old('fee') }}">
                             @error('fee')
                                 <div class="text-danger">
                                     {{ $message }}
@@ -69,21 +69,21 @@
                                 </div>
                             @enderror
                             <label class="label-control my-2" for="">Video URL</label>
-                            <input class="form-control" type="text" name="video_url">
+                            <input class="form-control" type="text" name="video_url" value="{{ old('video_url') }}">
                             @error('video_url')
                                 <div class="text-danger">
                                     {{ $message }}
                                 </div>
                             @enderror
                             <label class="label-control my-2" for="">Meet URL</label>
-                            <input class="form-control" type="text" name="meet_url">
+                            <input class="form-control" type="text" name="meet_url" value="{{ old('meet_url') }}">
                             @error('meet_url')
                                 <div class="text-danger">
                                     {{ $message }}
                                 </div>
                             @enderror
                             <label class="label-control my-2" for="">Poster URL</label>
-                            <input class="form-control" type="text" name="poster_url">
+                            <input class="form-control" type="text" name="poster_url" value="{{ old('poster_url') }}">
                             @error('poster_url')
                                 <div class="text-danger">
                                     {{ $message }}

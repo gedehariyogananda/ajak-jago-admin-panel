@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('image_path');
             $table->enum('status', ['open','closed']);
             $table->string('video_url')->nullable();
-            $table->string('meet_url');
+            $table->string('meet_url')->nullable();
             $table->string('poster_url');
             $table->timestamps();
             

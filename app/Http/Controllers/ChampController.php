@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ChampRequest;
-use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Bootcamp;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Request;
-use Session;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -93,7 +90,7 @@ class ChampController extends Controller
         $getData = DB::table('bootcamp_participant')
             ->where('user_id', $parameter2)
             ->where('bootcamp_id', $parameter1)
-            ->select('open_regis')
+            ->select('bukti_shared')
             ->first();
 
         return Storage::download($getData->open_regis);

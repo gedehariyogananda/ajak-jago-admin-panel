@@ -66,6 +66,11 @@
                                   <ul class="list-group">
                                     <li class="list-group-item">Name : {{ $wbnr->name }}</li>
                                     <li class="list-group-item">Email : {{ $wbnr->email }}</li>
+                                    <li class="list-group-item">Level Education : {{ $wbnr->level_education }}</li>
+                                    <li class="list-group-item">Provincial Origin : {{ $wbnr->provincial_origin }}</li>
+                                    <li class="list-group-item">Wa Number : {{ $wbnr->wa_number }}</li>
+                                    <li class="list-group-item">Institusi : {{ $wbnr->institusi }}</li>
+                                    <li class="list-group-item">Age : {{ $wbnr->age }}</li>
                                     <li class="list-group-item">Information from : {{ $wbnr->pivot->info }}</li>
                                     {{-- @foreach($detailUser as $key) --}}
                                         {{-- <li><a href="{{ route('webinar.download',[$webinar->id,$wbnr->id]) }}">download</a></li> --}}

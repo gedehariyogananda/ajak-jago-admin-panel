@@ -81,6 +81,12 @@
                                   <ul class="list-group">
                                     <li class="list-group-item">Name : {{ $btcmp->name }}</li>
                                     <li class="list-group-item">Email : {{ $btcmp->email }}</li>
+                                    <li class="list-group-item">Level Education : {{ $btcmp->level_education }}</li>
+                                    <li class="list-group-item">Provincial Origin : {{ $btcmp->provincial_origin }}</li>
+                                    <li class="list-group-item">Wa Number : {{ $btcmp->wa_number }}</li>
+                                    <li class="list-group-item">Institusi : {{ $btcmp->institusi }}</li>
+                                    <li class="list-group-item">Age : {{ $btcmp->age }}</li>
+                                    <li class="list-group-item">Information from : {{ $btcmp->pivot->info }}</li>
                                     <li class="list-group-item">Jurusan : {{ $btcmp->pivot->jurusan }}</li>
                                     <li class="list-group-item">Description User : {{ $btcmp->pivot->description }}</li>
                                     <li class="list-group-item">Pengembangan NEXT : {{ $btcmp->pivot->pengembangan }}</li>

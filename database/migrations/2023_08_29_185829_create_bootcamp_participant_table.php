@@ -22,7 +22,7 @@ return new class extends Migration
             $table->text('ekspetasi');
             $table->string('file_cv');
             $table->string('bukti_follows');
-            $table->string('open_regis');
+            $table->string('bukti_shared');
             $table->timestamps();
             $table->primary(['user_id','bootcamp_id']);
         });

@@ -11,7 +11,7 @@ class Webinar extends Model
         'datetime' => 'datetime'
     ];
 
-    protected $guarded = ['id'];
+    protected $guarded = [];
 
     use HasFactory;
 
