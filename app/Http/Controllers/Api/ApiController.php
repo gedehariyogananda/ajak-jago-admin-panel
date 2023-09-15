@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Bootcamp;
 use App\Models\Team;
 use App\Models\Webinar;
 use Illuminate\Http\Request;
@@ -179,8 +180,51 @@ class ApiController extends Controller
                 'success' => false,
             ], 409);
             
-
         }
 
+
+        public function isRegisteredWebinar(Webinar $webinar){
+
+            $tokenId = auth()->guard('api')->id();
+
+            $checked = DB::table('partisipant_webinar')
+                        ->where('user_id', $tokenId)
+                        ->where('webinar_id', $webinar->id)
+                        ->first();
+
+            if ($checked) {
+                return response()->json([
+                    'success' => true, 
+                ], 201);
+            }
+    
+            return response()->json([
+                'success' => false,
+            ], 409);
+        }   
+
+        public function isRegisteredBootcamp(){
+            
+            $bootcamp = DB::table('bootcamps')->limit(3)->get();
+
+            $tokenId = auth()->guard('api')->id();
+
+            $checked = DB::table('bootcamp_participant')
+                        ->where('user_id', $tokenId)
+                        ->where('bootcamp_id', $bootcamp[0]->id)
+                        ->orWhere('bootcamp_id', $bootcamp[1]->id)
+                        ->orWhere('bootcamp_id', $bootcamp[2]->id)
+                        ->first();
+            
+         if ($checked) {
+            return response()->json([
+                'success' => true, 
+            ], 201);
+            }
+    
+            return response()->json([
+                'success' => false,
+            ], 409);
+        }
 
     }

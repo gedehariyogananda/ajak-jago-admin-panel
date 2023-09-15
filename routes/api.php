@@ -35,5 +35,11 @@ Route::group(['middleware' => 'api'], function () {
 
     // about us panel 
     Route::get('about-us/get', [ApiController::class, 'getAboutUs'])->name('getAboutUs');
+
+    // pengecekan regster webinar 
+    Route::get('checked/webinar/{webinar:identifier}', [ApiController::class, 'isRegisteredWebinar']);
+
+    // pengecekan regster bootcamp
+    Route::get('checked/bootcamp', [ApiController::class, 'isRegisteredBootcamp']);
 });
 
