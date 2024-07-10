@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TeamRequest;
-use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Team;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -11,16 +10,16 @@ use Illuminate\Support\Facades\DB;
 
 class AddmemberController extends Controller
 {
-    public function addMember(Team $team){
-        $users = User::all();
-        return view('content.addmember.shows', compact('team','users'));
+    public function addMember(User $user){
+        $teams = Team::all();
+        return view('content.addmember.shows', compact('teams','user'));
     }
 
-    public function editUser(Request $request, Team $team){
+    public function editUser(Request $request, User $user){
         DB::table('users')
-            ->where('id', $request->user_id)
+            ->where('id', $user->id)
             ->update([
-                'team_id' => $team->id,
+                'team_id' => $request->team_id,
             ]);
 
             return redirect('/')->with('success', 'The user team has been updated successfully');
@@ -35,5 +34,12 @@ class AddmemberController extends Controller
 
         return redirect('/')->with('success', 'the name of team has been updated');
 
+    }
+
+    public function resetTeam(){
+        DB::table('users')
+        ->update(['team_id' => '2']);
+
+        return redirect('/')->with('success', 'the name of team has been reset');
     }
 }

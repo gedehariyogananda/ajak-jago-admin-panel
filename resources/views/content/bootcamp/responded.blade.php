@@ -18,7 +18,12 @@
 @section('content')
 <div class="col-lg-12 my-4 order-0">
 
-    <h5>Detail Partisipant Webinar <span class="badge bg-label-primary me-1">{{ $bootcamp->title }}</span></h5>
+    <h5>Detail Partisipant Bootcamp <span class="badge bg-label-primary me-1">{{ $bootcamp->title }}</span></h5>
+
+  @if($bootcamp->users->count() >= 1)
+  <a href="{{ route('exportBootcamp', $bootcamp) }}">Export Responded Bootcamp</a>
+
+  @endif
 
   <div class="card">
     <div class="d-flex align-items-end row">
@@ -87,6 +92,7 @@
                                     <li class="list-group-item">Institusi : {{ $btcmp->institusi }}</li>
                                     <li class="list-group-item">Age : {{ $btcmp->age }}</li>
                                     <li class="list-group-item">Information from : {{ $btcmp->pivot->info }}</li>
+                                    <li class="list-group-item">Yang Kamu Ketahui ttg Ajakjago : {{ $btcmp->pivot->yangkamuketahui }}</li>
                                     <li class="list-group-item">Jurusan : {{ $btcmp->pivot->jurusan }}</li>
                                     <li class="list-group-item">Description User : {{ $btcmp->pivot->description }}</li>
                                     <li class="list-group-item">Pengembangan NEXT : {{ $btcmp->pivot->pengembangan }}</li>

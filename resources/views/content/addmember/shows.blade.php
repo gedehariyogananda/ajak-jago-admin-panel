@@ -19,21 +19,22 @@
     <div class="col-md-6">
         <div class="card">
             <div class="body">
-                <form action="{{ route('add.edituser', $team) }}" method="post">
+                <form action="{{ route('add.edituser', $user) }}" method="post">
                     @csrf
                     @method('patch')
                     <div class="mx-3">
                         <div class="mx-3">
-                            <p class="mt-3">Add Member to Team  
-                                <span class="badge bg-label-primary me-1">{{ $team->name }}</span>
+                            <p class="mt-3">Add {{ $user->name }} to Team 
+                                {{-- <span class="badge bg-label-primary me-1">{{ $team->name }}</span> --}}
                             </p>
                             <hr>
-                            <input type="hidden" name="team_id" value="{{ $team->id }}">
-                            <label class="my-2" for="team_id">User</label>
-                            <select class="form-select" name="user_id" id="team_id">
+                            <input type="hidden" name="user_id" value="{{ $user->id }}">
+                            <label class="my-2" for="team_id">Team</label>
+                           
+                            <select class="form-select" name="team_id" id="team_id">
                                 <option selected disabled @readonly(true)>-- Select --</option>
-                                @foreach($users as $user)
-                                <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                @foreach($teams as $team)
+                                <option value="{{ $team->id }}">{{ $team->name }}</option>
                                 @endforeach
                             </select>
                             <button type="submit" class="btn btn-primary btn-sm my-3">Submitted</button>

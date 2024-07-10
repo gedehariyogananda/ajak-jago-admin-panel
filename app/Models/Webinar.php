@@ -7,10 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Webinar extends Model
 {
-    protected $casts = [
-        'datetime' => 'datetime'
-    ];
-
     protected $guarded = [];
 
     use HasFactory;

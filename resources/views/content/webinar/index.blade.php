@@ -21,10 +21,20 @@
     + Add form</a>
 </div>
 
+<form action="{{ route('searchWebinar') }}" method="GET">
+  <div class="d-flex my-2">
+    <input type="text" class="mx-end form-control form-control-sm w-25" name="query" placeholder="Search Webinar By Name" aria-label="Search...">
+    <button class="btn btn-sm btn-warning mx-2" type="submit">
+        <i class="bx bx-search fs-4 lh-0"></i>
+    </button>
+  </div>
+</form>
+
+
 
 <div class="row">
   @foreach($webinars as $webinar)
-  <div class="col-md-4">
+  <div class="col-md-4 mt-2">
     <div class="card">
       <img src="{{ asset('storage/' . $webinar->image_path) }}" class="card-img-top" alt="">
       <div class="d-flex justify-content-between">
@@ -83,7 +93,7 @@
 
                   <li class="list-group-item">Title : {{ $webinar->title }}</li>
                   <li class="list-group-item">Description : {{ $webinar->description }}</li>
-                  <li class="list-group-item">Date : {{ $webinar->datetime->format('d F Y, H:i:s') }}</li>
+                  <li class="list-group-item">Date : {{ $webinar->datetime }}</li>
                   <li class="list-group-item">Place : {{ $webinar->place }}</li>
                   <li class="list-group-item">Fee : {{ $webinar->fee }}</li>
                   <li class="list-group-item">Video URL : {{ $webinar->video_url }}</li>
@@ -106,7 +116,6 @@
   @endforeach
 </div>
 <br><br>
-{{ $webinars->links() }}
 
 
 @endsection

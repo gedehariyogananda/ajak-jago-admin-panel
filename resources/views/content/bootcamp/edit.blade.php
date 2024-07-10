@@ -39,12 +39,12 @@
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                             <label class="label-control my-2" for="">Start</label>
-                            <input class="form-control" value="{{ $bootcamp->start_date_reg }}" type="datetime-local" name="start_date_reg">
+                            <input class="form-control" value="{{ $bootcamp->start_date_reg }}" type="date" name="start_date_reg">
                             @error('start_date_reg')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                             <label class="label-control my-2" for="">End</label>
-                            <input class="form-control" value="{{ $bootcamp->end_date_reg }}" type="datetime-local" name="end_date_reg">
+                            <input class="form-control" value="{{ $bootcamp->end_date_reg }}" type="date" name="end_date_reg">
                             @error('end_date_reg')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
@@ -73,7 +73,9 @@
                             @error('wa_group_url')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
-                            <button type="submit" class="btn btn-secondary btn-sm my-3">editted</button>
+                            <div class="d-flex justify-content-end">
+                                <button type="submit" class="btn btn-primary btn-sm my-3">editted</button>
+                            </div>
                         </div>
                         
                     </form>

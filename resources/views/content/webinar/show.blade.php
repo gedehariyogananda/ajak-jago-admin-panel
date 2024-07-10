@@ -41,7 +41,7 @@
                                 </div>
                             @enderror
                             <label class="label-control my-2" for="">Date</label>
-                            <input class="form-control" type="datetime-local" name="datetime">
+                            <input class="form-control" type="datetime-local" name="datetime" value="{{ old('datetime') }}">
                             @error('datetime')
                                 <div class="text-danger">
                                     {{ $message }}

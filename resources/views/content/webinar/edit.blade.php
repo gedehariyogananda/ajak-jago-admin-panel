@@ -69,7 +69,7 @@
                         </div>
                         @enderror
                         <label class="label-control my-2" for="">Image</label>
-                        <input class="form-control" value="#" type="file" name="image_path">
+                        <input class="form-control" value="{{ $webinar->image_path }}" type="file" name="image_path">
                         @error('image_path')
                         <div class="text-danger">
                             {{ $message }}

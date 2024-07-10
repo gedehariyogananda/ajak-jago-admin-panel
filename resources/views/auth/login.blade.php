@@ -1,6 +1,6 @@
 @extends('layouts/blankLayout')
 
-@section('title', 'Login Basic - Pages')
+@section('title', 'Login Panel Pages')
 
 @section('page-style')
 <!-- Page -->
@@ -42,9 +42,13 @@
             <label class="form-label" for="password">Password</label>
 
               </div>
-              <div class="input-group input-group-merge">
-                <input type="password" id="password" class="form-control  @error('password') is-invalid @enderror" name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" />
-                <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+              <div class="input-group">
+                {{-- <input type="password" id="password" class="form-control  @error('password') is-invalid @enderror" name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" /> --}}
+                {{-- <span class="input-group-text cursor-pointer"></span> --}}
+                {{-- <i class="bi bi-eye-slash"></i> --}}
+
+                <input type="password" class="form-control" name="password" id="password" />
+                <i class="bi bi-eye-slash" id="togglePassword"></i>
 
                 @error('password')
                     <span class="invalid-feedback" role="alert">
@@ -72,4 +76,19 @@
   </div>
 </div>
 </div>
+
+<script>
+  const togglePassword = document.querySelector('#togglePassword');
+  const password = document.querySelector('#password');
+  togglePassword.addEventListener('click', () => {
+      // Toggle the type attribute using
+      // getAttribure() method
+      const type = password
+          .getAttribute('type') === 'password' ?
+          'text' : 'password';
+      password.setAttribute('type', type);
+      // Toggle the eye and bi-eye icon
+      this.classList.toggle('bi-eye');
+  });
+</script>
 @endsection

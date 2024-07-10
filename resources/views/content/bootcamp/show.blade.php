@@ -25,7 +25,7 @@
                         @csrf
                         <div class="mx-3">
                             <label class="label-control my-2" for="">title</label>
-                            <input class="form-control mb-4" type="text" name="title">
+                            <input class="form-control mb-4" type="text" name="title" value="{{ old('title') }}">
                             @error('title')
                                 <div class="text-danger">
                                     {{ $message }}
@@ -41,21 +41,21 @@
                                 @enderror
                             </div>
                             <label class="label-control my-2" for="">Start Date Regist</label>
-                            <input class="form-control" type="date" name="start_date_reg">
+                            <input class="form-control" type="date" value="{{ old('start_date_reg') }}" name="start_date_reg">
                             @error('start_date_reg')
                                 <div class="text-danger">
                                     {{ $message }}
                                 </div>
                             @enderror
                             <label class="label-control my-2" for="">End Date Regist</label>
-                            <input class="form-control" type="date" name="end_date_reg">
+                            <input class="form-control" type="date" value="{{ old('end_date_reg') }}" name="end_date_reg">
                             @error('end_date_reg')
                                 <div class="text-danger">
                                     {{ $message }}
                                 </div>
                             @enderror
                             <label class="label-control my-2" for="">Fee</label>
-                            <input class="form-control" type="text" name="fee">
+                            <input class="form-control" type="text" value="{{ old('fee') }}" name="fee">
                             @error('fee')
                                 <div class="text-danger">
                                     {{ $message }}
@@ -69,27 +69,30 @@
                                 </div>
                             @enderror
                             <label class="label-control my-2" for="">Place</label>
-                            <input class="form-control" type="text" name="place">
+                            <input class="form-control" type="text" value="{{ old('place') }}" name="place">
                             @error('place')
                                 <div class="text-danger">
                                     {{ $message }}
                                 </div>
                             @enderror
                             <label class="label-control my-2" for="">Time Long</label>
-                            <input class="form-control" type="text" name="time_long">
+                            <input class="form-control" type="text" value="{{ old('time_long') }}" name="time_long">
                             @error('time_long')
                                 <div class="text-danger">
                                     {{ $message }}
                                 </div>
                             @enderror
                             <label class="label-control my-2" for="">wa_group_url</label>
-                            <input class="form-control" type="text" name="wa_group_url">
+                            <input class="form-control" type="text" value="{{ old('wa_group_url') }}" name="wa_group_url">
                             @error('wa_group_url')
                                 <div class="text-danger">
                                     {{ $message }}
                                 </div>
                             @enderror
-                            <button type="submit" class="btn btn-secondary btn-sm my-3">added</button>
+                            <div class="d-flex justify-content-end">
+                            <button type="submit" class="btn btn-primary btn-sm my-3 ">added</button>
+
+                            </div>
                         </div>
                     </form>
 

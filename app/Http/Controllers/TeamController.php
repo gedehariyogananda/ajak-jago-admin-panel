@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Requests\TeamRequest;
 use App\Models\Team;
 use Illuminate\Support\Str;

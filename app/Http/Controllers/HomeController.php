@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
-use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Team;
 use App\Models\User;
 
@@ -12,8 +11,8 @@ class HomeController extends Controller
 
     public function index()
     {
-        $teams = Team::all();
-        $users = User::all();
+        $teams = Team::get();
+        $users = User::get();
         $tim = 'Over All';
         return view('content.paneluser.index', compact('users','teams','tim'));
     }

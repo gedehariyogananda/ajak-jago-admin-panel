@@ -31,7 +31,7 @@ class ChampRequest extends FormRequest
             'time_long' => ['required'],
             'place' => ['required'],
             'fee' => ['required'],
-            'image_path' => ['image', 'file', 'max:1024'],
+            'image_path' => ['image', 'file', 'max:3000'],
             'wa_group_url' => ['required'],
         ];
     }

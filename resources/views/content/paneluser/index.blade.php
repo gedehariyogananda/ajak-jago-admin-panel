@@ -27,6 +27,16 @@
     
   </div>
 
+  
+  <form action="{{ route('searchTeam') }}" method="GET">
+    <div class="d-flex my-2">
+      <input type="text" class="mx-end form-control form-control-sm w-25" name="query" placeholder="Search Team By Name" aria-label="Search...">
+      <button class="btn btn-sm btn-warning mx-2" type="submit">
+          <i class="bx bx-search fs-4 lh-0"></i>
+      </button>
+    </div>
+</form>
+
   @foreach($teams as $team)
     <div class="col-md-3">
       <div class="card my-2">
@@ -47,13 +57,10 @@
               </form>
               
               
-              <a href="{{ route('add.editteam', $team) }}" class="btn btn-info btn-sm mx-2"><i class='bx bx-edit'></i></a>
+              
               @endif
 
-              <a class="btn btn-sm btn-primary" href="{{ route('add.addmember', $team) }}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-add" viewBox="0 0 16 16">
-                <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0Zm-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
-                <path d="M2 13c0 1 1 1 1 1h5.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.544-3.393C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4Z"/>
-              </svg></a>
+              <a href="{{ route('add.editteam', $team) }}" class="btn btn-info btn-sm mx-2"><i class='bx bx-edit'></i></a>
 
             </div>
           </div>
@@ -65,11 +72,44 @@
 
   <p>#note : click title to spesific name team</p>
 
+  
 
   <div class="col-lg-12 my-4 order-0">
 
+    @if($tim)
       <h5>Detail User <span class="badge bg-label-primary me-1">{{ $tim }}</span></h5>
+      
+    @endif
 
+    
+ 
+   
+
+
+    <div class="d-flex justify-content-between">
+
+      <form action="{{ route('reset') }}" method="post">
+        @csrf
+        @method('patch')
+      <div >
+      <button class="btn btn-sm btn-danger" type="submit">Reset team all Users</button>
+      <p >
+        *# warning : the button has been reset all team in user to set default USER
+     </p>
+      </div>
+      </form>
+      <form action="{{ route('searchUser') }}" method="GET">
+        <div class="d-flex">
+          <input type="text" class="mx-end form-control form-control-sm w-100" name="query" placeholder="Search User By Name." aria-label="Search...">
+          <button class="btn btn-sm btn-warning mx-2" type="submit">
+              <i class="bx bx-search fs-4 lh-0"></i>
+          </button>
+        </div>
+    </form>
+
+    </div>
+
+    
     <div class="card">
       <div class="d-flex align-items-end row">
           <div class="card-body">
@@ -103,7 +143,7 @@
                             <div class="row row-cols-lg-auto g-3 align-items-center">
 
                                 {{-- see --}}
-                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{ $user->id }}">
+                                <button type="button" class="btn btn-primary btn-sm mx-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{ $user->id }}">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye"
                                   viewBox="0 0 16 16">
                                   <path
@@ -111,24 +151,31 @@
                                   <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
                                 </svg></button>
 
+                                @if($user->team_id == '2')
+                                {{-- added team --}}
+                                <a class="btn btn-sm btn-success mx-1" href="{{ route('add.addmember', $user) }}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                                  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                                </svg></a>
+
+                                @endif
 
                                   {{-- edit team--}}
-                                  <a href="{{ route('user.edit', $user) }}" class="btn btn-info btn-sm mx-2"><i class='bx bx-edit'></i></a>
+                                  <a href="{{ route('user.edit', $user) }}" class="btn btn-info btn-sm mx-1"><i class='bx bx-edit'></i></a>
 
 
                                   @if($user->team_id == '1')
                                   {{-- edit sub team dan profile --}}
-                                  <a class="btn btn-sm btn-warning" href="{{ route('useredit.team', $user) }}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-lock" viewBox="0 0 16 16">
+                                  <a class="btn btn-sm btn-warning mx-1" href="{{ route('useredit.team', $user) }}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-lock" viewBox="0 0 16 16">
                                     <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm-9 8c0 1 1 1 1 1h5v-1a1.9 1.9 0 0 1 .01-.2 4.49 4.49 0 0 1 1.534-3.693C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4Zm7 0a1 1 0 0 1 1-1v-1a2 2 0 1 1 4 0v1a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-2Zm3-3a1 1 0 0 0-1 1v1h2v-1a1 1 0 0 0-1-1Z"/>
                                   </svg></a>
                                   @elseif($user->team_id == '2')
 
-                                    <button class="btn btn-sm btn-secondary" disabled><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-lock" viewBox="0 0 16 16">
+                                    <button class="btn btn-sm btn-secondary mx-1" disabled><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-lock" viewBox="0 0 16 16">
                                       <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm-9 8c0 1 1 1 1 1h5v-1a1.9 1.9 0 0 1 .01-.2 4.49 4.49 0 0 1 1.534-3.693C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4Zm7 0a1 1 0 0 1 1-1v-1a2 2 0 1 1 4 0v1a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-2Zm3-3a1 1 0 0 0-1 1v1h2v-1a1 1 0 0 0-1-1Z"/>
                                     </svg></button>
                                   @else
                                          {{-- edit sub team dan profile --}}
-                                         <a class="btn btn-sm btn-warning" href="{{ route('usereditnoclevel.team', $user) }}"><i class='bx bx-street-view'></i></a>
+                                         <a class="btn btn-sm btn-warning mx-1" href="{{ route('usereditnoclevel.team', $user) }}"><i class='bx bx-street-view'></i></a>
                                   @endif
                                   
                                   
@@ -174,7 +221,7 @@
                           </div>
                     @empty
                     <div class="alert alert-danger">
-                        There are no information user about teams u needed
+                        There are no information user
                     </div>
                     @endforelse
                 </tbody>
@@ -191,8 +238,6 @@
         this page only for IT ADMINISTRATION, if u want to access u have to contact the IT administrator
       </div>
     @endcan
-
-
   </div>
 </div>
 

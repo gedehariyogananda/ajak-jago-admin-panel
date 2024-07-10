@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use RealRashid\SweetAlert\Facades\Alert;
+use App\Exports\RespondedWebinarExport;
 use App\Http\Requests\WebinarRequest;
 use App\Models\Webinar;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -12,7 +13,7 @@ use Illuminate\Support\Str;
 class WebinarController extends Controller
 {
     public function index(){
-        $webinars = Webinar::simplePaginate(3);
+        $webinars = Webinar::latest()->get();
         return view('content.webinar.index', compact('webinars'));
     }
 
@@ -103,5 +104,12 @@ class WebinarController extends Controller
     }
 
 
+    // export webinar
+    public function export(Webinar $webinar)
+    {
+        return Excel::download(new RespondedWebinarExport($webinar), 'respondedWebinar.xlsx');
+    }
+
 }
+
 

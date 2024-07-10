@@ -23,9 +23,18 @@
     </svg> Add Form</a>
 </div>
 
+<form action="{{ route('searchBootcamp') }}" method="GET">
+  <div class="d-flex my-2">
+    <input type="text" class="mx-end form-control form-control-sm w-25" name="query" placeholder="Search Bootcamp By Name" aria-label="Search...">
+    <button class="btn btn-sm btn-warning mx-2" type="submit">
+        <i class="bx bx-search fs-4 lh-0"></i>
+    </button>
+  </div>
+</form>
+
 <div class="row">
-    @foreach($bootcamps as $bootcamp)
-    <div class="col-md-4">
+    @forelse($bootcamps as $bootcamp)
+    <div class="col-md-4 mt-3">
         <div class="card">
             <img src="{{ asset('storage/' . $bootcamp->image_path) }}" class="card-img-top" alt="">
             <h5 class="mx-3 my-3">{{ $bootcamp->title }}</h5>
@@ -77,23 +86,25 @@
                         <li class="list-group-item">End : {{ $bootcamp->end_date_reg }}</li>
                         <li class="list-group-item">Place : {{ $bootcamp->place }}</li>
                         <li class="list-group-item">Fee : {{ $bootcamp->fee }}</li>
+                        <li class="list-group-item">Time Long : {{ $bootcamp->time_long }}</li>
                         <li class="list-group-item" class="mt-2">Wa Group URL : {{ $bootcamp->wa_group_url }}</li>
                      </ul>
                         
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
     </div>
-    @endforeach
+    @empty  
+    <div class="alert alert-danger">
+     <p class="text-center">Not Found !!!</p>
+    </div>
+    @endforelse
 </div>
-
-<br><br>
-{{ $bootcamps->links() }}
 
 
 @endsection
